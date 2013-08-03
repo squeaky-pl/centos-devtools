@@ -12,7 +12,6 @@
     </install>
     <mkdir>
         /workspace/src
-        /opt/prefix
         /opt/devtools
     </mkdir>
     <copy>
@@ -22,9 +21,9 @@
     <append path="/root/.bashrc">
         source /opt/centos/devtoolset-1.1/enable
 
-        export CFLAGS=-I/opt/prefix/include
-        export CPPFLAGS=-I/opt/prefix/include
-        export LDFLAGS="-L/opt/prefix/lib -Wl,-rpath,/opt/prefix/lib"
+        export CFLAGS=-I/opt/devtools/include
+        export CPPFLAGS=-I/opt/devtools/include
+        export LDFLAGS="-L/opt/devtools/lib -Wl,-rpath,/opt/devtools/lib"
 
         cd /workspace
     </append>

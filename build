@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+cd src
+
+wget http://gcc-uk.internet.bs/releases/gcc-4.8.1/gcc-4.8.1.tar.bz2
+tar xf gcc-4.8.1.tar.bz2
+mkdir gcc
+cd gcc
+../gcc-4.8.1/configure --prefix=/opt/devtools --with-gmp=/opt/devtools --with-mpfr=/opt/devtools --with-mpc=/opt/devtools --enable-languages=c,c++ --disable-multilib --disable-multiarch --with-boot-ldflags="$LDFLAGS" --with-stage1-ldflags="$LDFLAGS"
+make -j4
+make install
