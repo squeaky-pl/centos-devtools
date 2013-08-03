@@ -1,0 +1,31 @@
+<spec>
+    <repositories>
+        http://people.centos.org/tru/devtools-1.1/devtools-1.1.repo
+    </repositories>
+    <install>
+        devtoolset-1.1-binutils devtoolset-1.1-gcc devtoolset-1.1-gcc-c++
+        make
+        wget
+        m4
+        diffutils
+        bzip2
+    </install>
+    <mkdir>
+        /workspace/src
+        /opt/prefix
+        /opt/devtools
+    </mkdir>
+    <copy>
+        build_deps /workspace
+        build /workspace
+    </copy>
+    <append path="/root/.bashrc">
+        source /opt/centos/devtoolset-1.1/enable
+
+        export CFLAGS=-I/opt/prefix/include
+        export CPPFLAGS=-I/opt/prefix/include
+        export LDFLAGS="-L/opt/prefix/lib -Wl,-rpath,/opt/prefix/lib"
+
+        cd /workspace
+    </append>
+</spec>
