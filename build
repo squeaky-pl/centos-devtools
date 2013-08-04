@@ -2,6 +2,14 @@
 
 cd src
 
+wget ftp://sourceware.org/pub/binutils/releases/binutils-2.23.2.tar.bz2
+tar xf binutils-2.23.2.tar.bz2
+cd binutils-2.23.2
+./configure --prefix=/opt/devtools/
+make -j4
+make install
+cd ..
+
 wget http://gcc-uk.internet.bs/releases/gcc-4.8.1/gcc-4.8.1.tar.bz2
 tar xf gcc-4.8.1.tar.bz2
 mkdir gcc

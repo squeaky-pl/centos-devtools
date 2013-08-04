@@ -9,6 +9,7 @@
         m4
         diffutils
         bzip2
+        glibc-devel
     </install>
     <mkdir>
         /workspace/src
