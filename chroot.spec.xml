@@ -18,6 +18,7 @@
     <copy>
         build_deps /workspace
         build /workspace
+        package /workspace
     </copy>
     <append path="/root/.bashrc">
         source /opt/centos/devtoolset-1.1/enable
@@ -28,4 +29,7 @@
 
         cd /workspace
     </append>
+    <run>
+        fix-devtoolset
+    </run>
 </spec>

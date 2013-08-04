@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# fix devtoolset
+cp -r $1/opt/rh/* $1/opt/centos/
+if [ ! -f $1/opt/centos/devtoolset-1.1/root/usr/bin/ld ]; then
+    ln -s /opt/centos/devtoolset-1.1/root/usr/bin/ld.bfd $1/opt/centos/devtoolset-1.1/root/usr/bin/ld
+fi
+
+exit 0

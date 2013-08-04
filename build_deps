@@ -2,10 +2,16 @@
 
 cd src
 
+ABI=64
+
+if [ $(uname -m) = "i686" ]; then
+    ABI=32
+fi
+
 wget ftp://ftp.gmplib.org/pub/gmp/gmp-5.1.2.tar.bz2
 tar xf gmp-5.1.2.tar.bz2
 cd gmp-5.1.2
-./configure --prefix=/opt/devtools
+ABI=$ABI ./configure --prefix=/opt/devtools
 make -j4
 make install
 cd ..
