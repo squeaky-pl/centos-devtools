@@ -3,21 +3,21 @@ set -e
 
 cd src
 
-wget ftp://sourceware.org/pub/binutils/releases/binutils-2.23.2.tar.bz2
-tar xf binutils-2.23.2.tar.bz2
-cd binutils-2.23.2
-./configure --prefix=/opt/devtools/
+wget http://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
+tar xf binutils-2.25.tar.bz2
+cd binutils-2.25
+./configure --prefix=/opt/devtools-4.9 --enable-targets=i686-pc-linux-gnu,x86_64-pc-linux-gnu
 make -j4
 make install
 cd ..
 
-wget http://gcc-uk.internet.bs/releases/gcc-4.8.2/gcc-4.8.2.tar.bz2
-tar xf gcc-4.8.2.tar.bz2
+wget ftp://ftp.gnu.org/gnu/gcc/gcc-4.9.2/gcc-4.9.2.tar.bz2
+tar xf gcc-4.9.2.tar.bz2
 mkdir gcc
 cd gcc
-../gcc-4.8.2/configure --prefix=/opt/devtools --with-gmp=/opt/devtools --with-mpfr=/opt/devtools --with-mpc=/opt/devtools --enable-languages=c,c++ --disable-multilib --disable-multiarch --with-boot-ldflags="$LDFLAGS" --with-stage1-ldflags="$LDFLAGS"
-make -j4
+../gcc-4.9.2/configure --with-system-zlib --prefix=/opt/devtools-4.9 --with-gmp=/opt/devtools-4.9 --with-mpfr=/opt/devtools-4.9 --with-mpc=/opt/devtools-4.9 --enable-languages=c,c++ --enable-multilib --enable-multiarch --enable-targets=i686-pc-linux-gnu,x86_64-pc-linux-gnu --with-boot-ldflags="$LDFLAGS" --with-stage1-ldflags="$LDFLAGS"
+make -j1
 make install
 
-cd /opt/devtools/bin
+cd /opt/devtools-4.9/bin
 ln -s gcc cc

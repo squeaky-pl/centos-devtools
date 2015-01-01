@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
+mkdir -p src
 cd src
 
 ABI=64
@@ -9,10 +10,10 @@ if [ $(uname -m) = "i686" ]; then
     ABI=32
 fi
 
-wget http://ftp.gmplib.org/gmp/gmp-5.1.3.tar.bz2
+wget https://gmplib.org/download/gmp/gmp-5.1.3.tar.bz2
 tar xf gmp-5.1.3.tar.bz2
 cd gmp-5.1.3
-ABI=$ABI ./configure --prefix=/opt/devtools
+ABI=$ABI ./configure --prefix=/opt/devtools-4.9
 make -j4
 make install
 cd ..
@@ -20,7 +21,7 @@ cd ..
 wget http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.bz2
 tar xf mpfr-3.1.2.tar.bz2
 cd mpfr-3.1.2
-./configure --prefix=/opt/devtools
+./configure --prefix=/opt/devtools-4.9
 make -j4
 make install
 cd ..
@@ -28,7 +29,7 @@ cd ..
 wget http://www.multiprecision.org/mpc/download/mpc-1.0.1.tar.gz
 tar xf mpc-1.0.1.tar.gz 
 cd mpc-1.0.1
-./configure --prefix=/opt/devtools
+./configure --prefix=/opt/devtools-4.9
 make -j4
 make install
 cd ..
