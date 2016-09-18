@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 
-GCC=$(/opt/devtools/bin/gcc --version | head -n 1 | awk '{ print $3 }')
-BINUTILS=$(/opt/devtools/bin/ld --version | head -n 1 | awk '{ print $5 }')
+GCC=$(/opt/devtools-6.2/bin/gcc --version | head -n 1 | awk '{ print $3 }')
+BINUTILS=$(/opt/devtools-6.2/bin/ld --version | head -n 1 | awk '{ print $5 }')
 
-tar cf - /opt/devtools | bzip2 --best - > gcc-$GCC-binutils-$BINUTILS-$(uname -m).tar.bz2 
+tar cf - /opt/devtools-6.2 | bzip2 --best - > gcc-$GCC-binutils-$BINUTILS-$(uname -m).tar.bz2 
 
