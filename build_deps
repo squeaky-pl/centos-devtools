@@ -1,34 +1,24 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
 set -e
 
-cd src
-
-ABI=64
-
-if [ $(uname -m) = "i686" ]; then
-    ABI=32
-fi
-
-wget http://ftp.gmplib.org/gmp/gmp-5.1.3.tar.bz2
-tar xf gmp-5.1.3.tar.bz2
-cd gmp-5.1.3
-ABI=$ABI ./configure --prefix=/opt/devtools
+wget http://mirror.internode.on.net/pub/gnu/gmp/gmp-6.1.1.tar.bz2 -O - | tar xj
+cd gmp-6.1.1
+./configure --prefix=/opt/devtools-6.2 --libdir=/opt/devtools-6.2/lib64
 make -j4
 make install
 cd ..
 
-wget http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.bz2
-tar xf mpfr-3.1.2.tar.bz2
-cd mpfr-3.1.2
-./configure --prefix=/opt/devtools
+wget http://www.mpfr.org/mpfr-current/mpfr-3.1.4.tar.bz2 -O - | tar xj
+cd mpfr-3.1.4
+./configure --prefix=/opt/devtools-6.2 --libdir=/opt/devtools-6.2/lib64
 make -j4
 make install
 cd ..
 
-wget http://www.multiprecision.org/mpc/download/mpc-1.0.1.tar.gz
-tar xf mpc-1.0.1.tar.gz 
-cd mpc-1.0.1
-./configure --prefix=/opt/devtools
+wget http://www.multiprecision.org/mpc/download/mpc-1.0.3.tar.gz -O - | tar xz
+cd mpc-1.0.3
+./configure --prefix=/opt/devtools-6.2 --libdir=/opt/devtools-6.2/lib64
 make -j4
 make install
 cd ..
