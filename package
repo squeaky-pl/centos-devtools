@@ -4,5 +4,11 @@
 GCC=$(/opt/devtools-6.2/bin/gcc --version | head -n 1 | awk '{ print $3 }')
 BINUTILS=$(/opt/devtools-6.2/bin/ld --version | head -n 1 | awk '{ print $5 }')
 
+cp -r /opt/devtools-6.2 /opt/devtools-orig
+
+cd /opt/devtools-6.2
+for i in `find -type f`; do [ -x $i ] && echo "$i"; done | xargs strip
+cd -
+
 tar cf - /opt/devtools-6.2 | bzip2 --best - > gcc-$GCC-binutils-$BINUTILS-$(uname -m).tar.bz2 
 
