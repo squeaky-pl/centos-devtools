@@ -1,18 +1,18 @@
 #!/bin/bash
 
 
-GCC=$(/opt/devtools-6.3/bin/gcc --version | head -n 1 | awk '{ print $3 }')
-BINUTILS=$(/opt/devtools-6.3/bin/ld --version | head -n 1 | awk '{ print $5 }')
+GCC=$(/opt/devtools-7.1/bin/gcc --version | head -n 1 | awk '{ print $3 }')
+BINUTILS=$(/opt/devtools-7.1/bin/ld --version | head -n 1 | awk '{ print $5 }')
 
-cp -r /opt/devtools-6.3 /opt/devtools-orig
+cp -r /opt/devtools-7.1 /opt/devtools-orig
 
-cd /opt/devtools-6.3/bin
+cd /opt/devtools-7.1/bin
 ln -s gcc cc
 cd -
 
-cd /opt/devtools-6.3
+cd /opt/devtools-7.1
 for i in `find -type f`; do [ -x $i ] && echo "$i"; done | xargs strip
 cd -
 
-tar cf - /opt/devtools-6.3 | bzip2 --best - > gcc-$GCC-binutils-$BINUTILS-$(uname -m).tar.bz2 
+tar cf - /opt/devtools-7.1 | bzip2 --best - > gcc-$GCC-binutils-$BINUTILS-$(uname -m).tar.bz2
 
