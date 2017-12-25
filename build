@@ -2,18 +2,18 @@
 
 set -e
 
-wget http://ftp.uni-hannover.de/pub/mirror/gnu/gnu/binutils/binutils-2.28.tar.gz -O - | tar xz
-cd binutils-2.28
-./configure --prefix=/opt/devtools-7.1/
+wget https://ftp.gnu.org/gnu/binutils/binutils-2.29.1.tar.gz  -O - | tar xz
+cd binutils-2.29.1
+./configure --prefix=/opt/devtools-7.2/
 make -j4
 make install
 cd ..
 
-wget http://nl.mirror.babylon.network/gcc/releases/gcc-7.1.0/gcc-7.1.0.tar.bz2 -O - | tar xj
+wget https://ftp.gnu.org/gnu/gcc/gcc-7.2.0/gcc-7.2.0.tar.gz -O - | tar xz
 mkdir -p gcc
 cd gcc
 ORGLDFLAGS=$LDFLAGS
 unset LDFLAGS
-../gcc-7.1.0/configure --prefix=/opt/devtools-7.1 --with-gmp=/opt/devtools-7.1 --with-mpfr=/opt/devtools-7.1 --with-mpc=/opt/devtools-7.1 --enable-languages=c,c++ --enable-multilib --with-stage1-ldflags="-L/opt/devtools-7.1/lib64 -Wl,-rpath,/opt/devtools-7.1/lib64 -L/opt/devtools-6.3/lib64 -Wl,-rpath,/opt/devtools-6.3/lib64" --with-boot-ldflags="-L/opt/devtools-7.1/lib64 -Wl,-rpath,/opt/devtools-7.1/lib64"
-LD_LIBRARY_PATH="/src/gcc/prev-x86_64-pc-linux-gnu/libstdc++-v3/src/.libs:/opt/devtools-7.1/lib64:/opt/devtools-6.3/lib64" make -j4
+../gcc-7.2.0/configure --prefix=/opt/devtools-7.2 --with-gmp=/opt/devtools-7.2 --with-mpfr=/opt/devtools-7.2 --with-mpc=/opt/devtools-7.2 --enable-languages=c,c++ --disable-multilib --with-stage1-ldflags="-L/opt/devtools-7.2/lib64 -Wl,-rpath,/opt/devtools-7.2/lib64 -L/opt/devtools-6.3/lib64 -Wl,-rpath,/opt/devtools-6.3/lib64" --with-boot-ldflags="-L/opt/devtools-7.2/lib64 -Wl,-rpath,/opt/devtools-7.2/lib64"
+LD_LIBRARY_PATH="/opt/devtools-6.3/lib64" make -j4
 make install
