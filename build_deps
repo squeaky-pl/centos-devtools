@@ -4,28 +4,28 @@ set -e
 
 wget --no-check-certificate http://nixos.org/releases/patchelf/patchelf-0.9/patchelf-0.9.tar.gz -O - | tar xz
 cd patchelf-0.9
-CXXFLAGS="$CXXFLAGS -static-libstdc++" LDFLAGS="$LDFLAGS -static-libstdc++" ./configure --prefix=/opt/devtools-7.2
+CXXFLAGS="$CXXFLAGS -static-libstdc++" LDFLAGS="$LDFLAGS -static-libstdc++" ./configure --prefix=/opt/devtools-8.2
 make -j4
 make install
 cd -
 
 wget http://mirror.internode.on.net/pub/gnu/gmp/gmp-6.1.2.tar.bz2 -O - | tar xj
 cd gmp-6.1.2
-./configure --prefix=/opt/devtools-7.2 --libdir=/opt/devtools-7.2/lib64
+./configure --prefix=/opt/devtools-8.2 --libdir=/opt/devtools-8.2/lib64
 make -j4
 make install
 cd ..
 
-wget http://www.mpfr.org/mpfr-current/mpfr-3.1.6.tar.bz2 -O - | tar xj
-cd mpfr-3.1.6
-./configure --prefix=/opt/devtools-7.2 --libdir=/opt/devtools-7.2/lib64
+wget http://www.mpfr.org/mpfr-current/mpfr-4.0.1.tar.bz2 -O - | tar xj
+cd mpfr-4.0.1
+./configure --prefix=/opt/devtools-8.2 --libdir=/opt/devtools-8.2/lib64
 make -j4
 make install
 cd ..
 
-wget http://www.multiprecision.org/mpc/download/mpc-1.0.3.tar.gz -O - | tar xz
-cd mpc-1.0.3
-./configure --prefix=/opt/devtools-7.2 --libdir=/opt/devtools-7.2/lib64
+wget http://ftp.gnu.org/gnu/mpc/mpc-1.1.0.tar.gz -O - | tar xz
+cd mpc-1.1.0
+./configure --prefix=/opt/devtools-8.2 --libdir=/opt/devtools-8.2/lib64
 make -j4
 make install
 cd ..
