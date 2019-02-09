@@ -2,8 +2,8 @@
 
 set -e
 
-wget https://ftp.gnu.org/gnu/binutils/binutils-2.31.1.tar.gz  -O - | tar xz
-cd binutils-2.31.1
+wget https://ftp.gnu.org/gnu/binutils/binutils-2.32.tar.gz  -O - | tar xz
+cd binutils-2.32
 ./configure --prefix=/opt/devtools-8.2/
 make -j4
 make install
